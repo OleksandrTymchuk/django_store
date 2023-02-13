@@ -1,0 +1,17 @@
+h1 {
+    color: red;
+}
+
+.navbar-brand.logo {
+    color: deeppink;
+    font-size: 30px;
+}
+
+.nav-link {
+    color: deepskyblue;
+}
+
+.nav-item {
+    font-size: 20px;
+    font-weight: bold;
+}
