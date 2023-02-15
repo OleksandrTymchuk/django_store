@@ -26,6 +26,8 @@ services:
       - db
     links:
       - db
+    environment:
+      PYTHONUNBUFFERED: 1
 
   nginx:
     image: nginx:1.21-alpine
