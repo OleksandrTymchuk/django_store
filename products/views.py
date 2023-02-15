@@ -15,3 +15,8 @@ def add_product(request):
             return redirect("/")
     else:
         return redirect("/")
+
+
+def product_details(request, id):
+    product = Product.objects.get(id=id)
+    return render(request, "products/details.html", {"product":product})
