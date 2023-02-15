@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Product
 
 
@@ -18,5 +18,5 @@ def add_product(request):
 
 
 def product_details(request, id):
-    product = Product.objects.get(id=id)
+    product = get_object_or_404(Product, id=id)
     return render(request, "products/details.html", {"product":product})
