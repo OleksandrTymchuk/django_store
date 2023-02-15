@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <h1 class="text-center">Add Product</h1>
+        <form method="POST" action="{% url 'add_product' %}">
+            {% csrf_token %}
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" name="title" id="title" aria-describedby="title">
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+              <textarea class="form-control" id="description" name="description"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
