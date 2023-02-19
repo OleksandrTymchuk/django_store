@@ -1,3 +1,5 @@
 .idea
 .gitignore
 db.sqlite3
+.setup.sql
+docker/mysql
