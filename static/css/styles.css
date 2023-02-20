@@ -1,10 +1,19 @@
 .navbar-brand.logo {
-    color: deeppink;
+    color: paleturquoise;
     font-size: 30px;
 }
 
+nav .sign {
+    float: right;
+}
+
+nav .user {
+    color: white;
+    font-size: 25px;
+}
+
 .nav-link {
-    color: deepskyblue;
+    color: mediumaquamarine;
 }
 
 .nav-item {
