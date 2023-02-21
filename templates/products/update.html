@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <h1 class="text-center">Update Product</h1>
+        <form method="POST" action="{% url 'update_product' id=product.id %}">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" name="title" id="title" aria-describedby="title" value={{ product.title }}>
+            </div>
+            <div class="mb-3">
+                 <label for="description" class="form-label">Description</label>
+                 <textarea class="form-control" id="description" name="description">{{ product.description }}</textarea>
+            </div>
+            <div class="mb-3">
+                <label for="category" class="form-label">Select Category</label>
+                <select class="form-select" multiple aria-label="multiple select example" name="categories">
+                    {% for category in categories %}
+                        <option value="{{ category.id }}">{{ category.title }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
