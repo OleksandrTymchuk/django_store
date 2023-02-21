@@ -6,21 +6,21 @@
         <h1 class="text-center">Add Product</h1>
         <form method="POST" action="{% url 'add_product' %}">
             {% csrf_token %}
-          <div class="mb-3">
-            <label for="title" class="form-label">Title</label>
-            <input type="text" class="form-control" name="title" id="title" aria-describedby="title">
-            {% if form.title.errors %}
-                <div class="form-text text-danger">{{ form.title.errors }}</div>
-            {% endif %}
-          </div>
-          <div class="mb-3">
-            <label for="description" class="form-label">Description</label>
-              <textarea class="form-control" id="description" name="description"></textarea>
-              {% if form.description.errors %}
-                <div class="form-text text-danger">{{ form.description.errors }}</div>
-              {% endif %}
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" name="title" id="title" aria-describedby="title">
+                {% if form.title.errors %}
+                    <div class="form-text text-danger">{{ form.title.errors }}</div>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                 <label for="description" class="form-label">Description</label>
+                 <textarea class="form-control" id="description" name="description"></textarea>
+                 {% if form.description.errors %}
+                     <div class="form-text text-danger">{{ form.description.errors }}</div>
+                 {% endif %}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
 </div>
