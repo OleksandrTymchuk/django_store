@@ -7,4 +7,4 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 RUN pip install mysqlclient
 COPY . /django_project/
 
-# ENTRYPOINT ["/django_project/docker/python/entrypoint.sh"]
+ENTRYPOINT ["./docker/python/entrypoint.sh"]

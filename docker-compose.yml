@@ -31,7 +31,6 @@ services:
     build:
       dockerfile: ./docker/python/Dockerfile
       context: ./
-    command: gunicorn django_project.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - .:/django_project
     ports:
