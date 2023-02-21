@@ -39,6 +39,9 @@
           </div>
       </div>
     </nav>
+    {% load categories %}
+    {% all_categories %}
+    {% include 'category_nav.html' %}
 {% block content %}
 {% endblock %}
 <footer>

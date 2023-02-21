@@ -20,6 +20,14 @@
                      <div class="form-text text-danger">{{ form.description.errors }}</div>
                  {% endif %}
             </div>
+            <div class="mb-3">
+                <label for="category" class="form-label">Select Category</label>
+                <select class="form-select" multiple aria-label="multiple select example" name="categories">
+                    {% for category in categories %}
+                        <option value="{{ category.id }}">{{ category.title }}</option>
+                    {% endfor %}
+                </select>
+            </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
