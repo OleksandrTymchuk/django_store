@@ -36,7 +36,6 @@ def sign_up(request):
 def sign_in(request):
     if request.method == "POST":
         user = authenticate(request, username=request.POST.get("username"), password=request.POST.get("password"))
-        print("AUTH")
         print(user)
         if user:
             login(request, user)
