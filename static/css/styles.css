@@ -20,3 +20,25 @@ nav .user {
     font-size: 20px;
     font-weight: bold;
 }
+
+nav .btn-danger {
+    float: right;
+}
+
+footer {
+    width: 100%;
+    height: 200px;
+    background-color: rgb(33, 37, 41);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+footer .container-blocks {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+    align-items: center;
+}
