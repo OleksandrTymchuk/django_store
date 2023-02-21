@@ -5,8 +5,8 @@
     <div class="row">
         <h1 class="text-center">{{ product.title }}</h1>
         <p>{{ product.description }}</p>
+        Author:
         <a href="#">{{ product.user.first_name }} {{ product.user.last_name }}</a>
-        <a href="#">{{ product.approved_by.username }}</a>
     </div>
     {% if product.user_id == request.user.id %}
         <a href="{% url 'update_product' id=product.id %}" type="button" class="btn btn-warning">Edit</a>

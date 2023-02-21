@@ -5,6 +5,9 @@
 
 nav .sign {
     float: right;
+    display: flex;
+    justify-content: space-between;
+    width: 20%;
 }
 
 nav .user {
