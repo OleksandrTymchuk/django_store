@@ -15,6 +15,7 @@ class Product(models.Model):
 
 class Category(models.Model):
     title = models.CharField(max_length=255)
+    slug = models.CharField(max_length=100, null=True)
     user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
     parent_id = models.IntegerField(null=True, blank=True)
     products = models.ManyToManyField(Product)
