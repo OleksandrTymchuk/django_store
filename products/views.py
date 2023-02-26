@@ -50,6 +50,7 @@ def update_product(request, id):
                 return redirect("/")
     return redirect("/")
 
+
 def add_category(request):
     if request.user.is_authenticated and request.user.is_staff:
         if request.method == "POST":

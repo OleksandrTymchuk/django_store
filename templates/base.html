@@ -20,8 +20,6 @@
       {% load menu_menuitems %}
         {% all_menu_items %}
         {% include 'menu_items_nav.html' %}
-
-
             {% if request.user.is_authenticated %}
              <h3 class="user">{{ request.user.first_name }} {{ request.user.last_name }}</h3>
              <a type="button" class="btn btn-danger" href=" {% url 'logout' %}">Logout</a>
@@ -30,7 +28,6 @@
              <a type="button" class="btn btn-info" href=" {% url 'sign-in' %}">Sign In</a>
             {% endif %}
           </div>
-      </div>
     </nav>
     {% load categories %}
     {% all_categories %}

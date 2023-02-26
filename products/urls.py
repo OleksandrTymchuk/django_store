@@ -1,8 +1,9 @@
 from django.urls import path
-from .views import add_product,\
-    product_details,\
-    add_category,\
-    category_page,\
+from .views import \
+    add_product, \
+    product_details, \
+    add_category, \
+    category_page, \
     update_product
 
 urlpatterns = [
