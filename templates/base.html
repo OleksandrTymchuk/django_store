@@ -16,19 +16,12 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-              {% for menu_item in menu_items %}
-                  {% if menu_item.url == '/products/add' and not request.user.is_authenticated %}
-                  {% else %}
-                      <li class="nav-item">
-                          <a class="nav-link" aria-current="page" href="{{ menu_item.url }}">{{ menu_item.name }}</a>
-                      </li>
-                  {% endif %}
-              {% endfor %}
-          </ul>
-        </div>
-          <div class=sign>
+
+      {% load menu_menuitems %}
+        {% all_menu_items %}
+        {% include 'menu_items_nav.html' %}
+
+
             {% if request.user.is_authenticated %}
              <h3 class="user">{{ request.user.first_name }} {{ request.user.last_name }}</h3>
              <a type="button" class="btn btn-danger" href=" {% url 'logout' %}">Logout</a>

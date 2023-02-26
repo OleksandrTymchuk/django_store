@@ -1,0 +1,9 @@
+<div class="collapse navbar-collapse" id="navbarNav">
+  <ul class="navbar-nav">
+      {% for menu_item in all_menu_items_list %}
+          <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{{ menu_item.url }}">{{ menu_item.name }}</a>
+          </li>
+      {% endfor %}
+  </ul>
+</div>

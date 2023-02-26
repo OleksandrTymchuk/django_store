@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Product, Category
 from .forms import ProductForm
-from django.http import Http404
+from django.http import Http404, HttpResponseForbidden
 
 
 def add_product(request):
@@ -32,6 +32,24 @@ def product_details(request, id):
     return render(request, "products/details.html", {"product":product})
 
 
+def update_product(request, id):
+    if request.user.is_authenticated:
+        product = Product.objects.get(id=id)
+        if product.user_id == request.user.id:
+            if request.method == "GET":
+                categories = Category.objects.order_by("-id")
+                return render(request, "products/update.html", {"product":product, "categories":categories})
+            else:
+                product.title = request.POST.get("title", "")
+                product.description = request.POST.get("description", "")
+                product.save()
+                if request.POST.getlist("categories", False):
+                     for category_id in request.POST.getlist("categories"):
+                        category = Category.objects.get(id=category_id)
+                        category.products.add(product)
+                return redirect("/")
+    return redirect("/")
+
 def add_category(request):
     if request.user.is_authenticated and request.user.is_staff:
         if request.method == "POST":
@@ -55,20 +73,3 @@ def category_page(request, slug):
     return render(request, "products/category_products.html", {"products":category.products.all})
 
 
-def update_product(request, id):
-    if request.user.is_authenticated:
-        product = Product.objects.get(id=id)
-        if product.user_id == request.user.id:
-            if request.method == "GET":
-                categories = Category.objects.order_by("-id")
-                return render(request, "products/update.html", {"product":product, "categories":categories})
-            else:
-                product.title = request.POST.get("title", "")
-                product.description = request.POST.get("description", "")
-                product.save()
-                if request.POST.getlist("categories", False):
-                     for category_id in request.POST.getlist("categories"):
-                        category = Category.objects.get(id=category_id)
-                        category.products.add(product)
-                return redirect("/")
-    return redirect("/")

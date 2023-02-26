@@ -11,5 +11,4 @@ urlpatterns = [
     path("/category/add", add_category, name="add_category"),
     path("/<int:id>", product_details, name="product_details"),
     path("/category/<str:slug>", category_page, name="category_page"),
-
 ]
