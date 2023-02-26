@@ -1,6 +1,7 @@
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from .forms import UserSignUpForm, UserSignInForm
 from .models import MenuItem
 from django.contrib.auth.models import User
 from products.models import Product
@@ -15,33 +16,27 @@ def home(request):
     })
 
 def sign_up(request):
-    if request.method == "POST":
-        user = User()
-        user.email = request.POST.get("email")
-        user.username = request.POST.get("username")
-        user.first_name = request.POST.get("first_name")
-        user.last_name = request.POST.get("last_name")
-        user.set_password(request.POST.get("password"))
-        user.is_superuser = False
-        user.is_staff = False
-        user.is_active = True
-        user.save()
-        if user:
-            login(request, user)
+    form = UserSignUpForm(request.POST or None)
+    if form.is_valid():
+        user = form.save(commit=False)
+        user.set_password(form.cleaned_data.get("password"))
+        user = form.save()
+        login(request, user)
         return redirect("/")
-
-    else:
-        return render(request, "main/sign-up.html", {})
+    return render(request, "main/sign-up.html", {"form": form})
 
 def sign_in(request):
-    if request.method == "POST":
-        user = authenticate(request, username=request.POST.get("username"), password=request.POST.get("password"))
-        print(user)
-        if user:
+    form = UserSignInForm(request.POST or None)
+    if form.is_valid():
+        username = form.cleaned_data.get("username")
+        password = form.cleaned_data.get("password")
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
             login(request, user)
-        return redirect("/")
-    else:
-        return render(request, "main/sign-in.html", {})
+            return redirect("/")
+        else:
+            request.session["invalid_user"] = True
+    return render(request, "main/sign-in.html", {"form": form})
 
 
 def logout_view(request):
