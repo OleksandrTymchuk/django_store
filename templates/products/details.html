@@ -9,8 +9,8 @@
         <a href="#">{{ product.user.first_name }} {{ product.user.last_name }}</a>
     </div>
     {% if product.user_id == request.user.id %}
-        <a href="{% url 'update_product' id=product.id %}" type="button" class="btn btn-warning">Edit</a>
+        <a href="{% url 'update_product' id=product.id %}" type="button" class="btn btn-lg btn-warning">Edit</a>
     {% endif %}
+        <a href="{% url 'add_to_cart' product_id=product.id %}" type="button" class="btn btn-lg btn-success">Add to Cart</a>
 </div>
-
 {% endblock %}
