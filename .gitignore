@@ -4,3 +4,4 @@ db.sqlite3
 .setup.sql
 docker/mysql
 static/admin
+.env
