@@ -11,6 +11,7 @@
             <input type="text" class="form-control" name="title" id="title" aria-describedby="title">
             </div>
             <div class="mb-3">
+                <label for="category" class="form-label">If your category is a subcategory of one of the following categories, select it (not necessarily)</label>
                 <select class="form-select form-select-lg mb-3" multiple name="parent_category" aria-label=".form-select-lg example">
                     {% for category in categories %}
                           <option value="{{ category.id }}">{{ category.title }}</option>
