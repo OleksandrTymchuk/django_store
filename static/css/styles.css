@@ -55,3 +55,13 @@ footer .container-blocks {
 .card {
     margin-left: 20px;
 }
+
+.cart-remove {
+    color: white;
+    transition: 1s ease-in-out;
+}
+
+.cart-remove:hover {
+    color: white;
+    font-size: 20px;
+}

@@ -65,3 +65,14 @@ def cart(request):
     if request.session.get("products", False):
         products = Product.objects.filter(id__in=request.session.get("products"))
         return render(request, "main/cart.html", {"products": products})
+    else:
+        return render(request, "main/cart.html", {})
+
+
+def remove_from_cart(request, product_id):
+    if request.session.get("products", False):
+        for i in range(len(request.session.get("products"))):
+            if request.session.get("products")[i] == product_id:
+                del request.session.get("products")[i]
+                request.session.modified = True
+    return redirect("/cart")
