@@ -21,8 +21,9 @@
         {% include 'menu_items_nav.html' %}
             <div class="sign">
                 <div class="cart">
+                    {% load cart %}
                     <a href="{% url 'cart' %}">
-                        <i style="color: white;" class="fa-solid fa-cart-shopping"></i>
+                        <i style="color: white;" class="fa-solid fa-cart-shopping"><span class="text-info"> {% cart_count %}</span> </i>
                     </a>
                 </div>
             {% if request.user.is_authenticated %}
