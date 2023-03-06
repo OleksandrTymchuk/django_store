@@ -71,8 +71,10 @@ def cart(request):
 
 def remove_from_cart(request, product_id):
     if request.session.get("products", False):
-        for i in range(len(request.session.get("products"))):
+        product_len = len(request.session.get("products"))
+        for i in range(product_len):
             if request.session.get("products")[i] == product_id:
                 del request.session.get("products")[i]
                 request.session.modified = True
+                break
     return redirect("/cart")
