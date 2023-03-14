@@ -72,6 +72,6 @@ def category_page(request, slug):
         category = Category.objects.get(slug=slug)
     except Category.DoesNotExist:
         raise Http404()
-    return render(request, "products/category_products.html", {"products":category.products.all})
+    return render(request, "products/category_products.html", {"products":category.products.all()})
 
 
